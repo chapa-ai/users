@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+
+package users;
+
+option go_package = "./users";
+
+service UserManagement {
+  rpc CreateNewUser (NewUser) returns (User) {}
+  rpc GetUsers (GetUsersParams) returns (UserList) {}
+  rpc DeleteUser(DeleteUserParams) returns (DeletedUser);
+}
+
+message NewUser {
+  string name = 1;
+  string age = 2;
+}
+
+message User {
+  string name = 1;
+  string age = 2;
+  int64 id = 3;
+}
+
+message GetUsersParams {
+
+}
+
+message UserList {
+  repeated User users = 1;
+}
+
+message DeleteUserParams {
+  int64 id = 1;
+}
+
+message DeletedUser {
+  string name = 1;
+  string age = 2;
+  int64 id = 3;
+}
+
+
+
